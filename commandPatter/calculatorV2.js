@@ -4,7 +4,7 @@ const command = {
   multiply: '*',
   division: '/',
   execute: function(action, { num1, num2 }) {
-    return eval(num1 + this[action] + num2);
+    return eval(parseFloat(num1) + this[action] + parseFloat(num2));
   }
 };
 
