@@ -16,4 +16,9 @@ const command = {
   }
 };
 
-const calculate = () => {};
+const calculate = (action, numbers) => {
+  const result = command.execute(action, numbers);
+  console.log(
+    `In ${action} of numbers ${Object.values(numbers)} the result is ${result}`
+  );
+};
