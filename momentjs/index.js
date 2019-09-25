@@ -44,15 +44,18 @@ const getNumber = unitTime => parseInt(unitTime);
 
 const getShorthandUnitTime = (unitTime, number) => unitTime.replace(number, '');
 
-const setDateEmployee = name => {};
+const setDateEmployee = name => {
+  const findedEmployee = employees.find(emplyee => emplyee.name === name);
+  findedEmployee.date = moment(findedEmployee.date, DATE_FORMAT_COMPLETE);
+  findedEmployee.update_Up = moment();
+};
 
 const sumDiffDate = () => {};
 
 const a = moment('2010-10-20');
 const b = moment('2010-10-20');
 
-console.log('a: ', a.format(DATE_FORMAT_COMPLETE));
-console.log('sumDates: ', sumDates(a, ['2d']).format(DATE_FORMAT_COMPLETE));
-console.log('a: ', a.format(DATE_FORMAT_COMPLETE));
+setDateEmployee('Luis');
+console.log('emplyee: ', employees);
 
 // moment(string,stringFormato)
