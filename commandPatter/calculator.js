@@ -1,16 +1,8 @@
-const addition = (num1, num2) => num1 + num2;
-
-const subtraction = (num1, num2) => num1 - num2;
-
-const multiplication = (num1, num2) => num1 * num2;
-
-const division = (num1, num2) => num1 / num2;
-
 const command = {
-  add: addition,
-  subtract: subtraction,
-  multiply: multiplication,
-  division,
+  add: (num1, num2) => num1 + num2,
+  subtract: (num1, num2) => num1 - num2,
+  multiply: (num1, num2) => num1 * num2,
+  division: (num1, num2) => num1 / num2,
   execute: function(action, { num1, num2 }) {
     return this[action](num1, num2);
   }
