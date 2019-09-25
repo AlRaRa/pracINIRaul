@@ -1,3 +1,4 @@
+const moment = require('moment');
 const DATE_FORMAT = 'DD/MM/YYYY';
 const DATE_FORMAT_COMPLETE = 'DD/MM/YYYY HH:mm:sss';
 
