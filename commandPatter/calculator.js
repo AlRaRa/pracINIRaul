@@ -4,7 +4,7 @@ const subtraction = (num1, num2) => num1 - num2;
 
 const multiplication = (num1, num2) => num1 * num2;
 
-const division = () => {};
+const division = (num1, num2) => num1 / num2;
 
 const command = {};
 
