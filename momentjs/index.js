@@ -14,14 +14,14 @@ const employees = [
     name: 'Luis',
     money: 1500,
     timezone: 'Australia/Sydney',
-    date: '13/10/2017 -- 10:30:00',
+    date: '11/01/2017 -- 10:30:00',
     update_Up: ''
   },
   {
     name: 'Perico',
     money: 1200,
     timezone: 'Europe/Madrid',
-    date: '15/05/2017 -- 01:30:00',
+    date: '12/01/2017 -- 01:30:00',
     update_Up: ''
   }
 ];
@@ -52,11 +52,37 @@ const setDateEmployee = name => {
   }
 };
 
-const sumDiffDate = () => {};
+const sumDiffDate = () => {
+  setAllDateMoment();
+  return getAllDifferences().reduce((acc, current) => acc + current) + ' days';
+};
 
-const a = moment('2010-10-20');
-const b = moment('2010-10-20');
+const setAllDateMoment = () => {
+  employees.map(({ name }) => setDateEmployee(name));
+};
 
-setDateEmployee('Luis');
-setDateEmployee('Luis');
-console.log('employees: ', employees);
+const getAllDifferences = () => {
+  let nameExcludes = [];
+  let diffsDates = [];
+  employees.map(({ name, date }) => {
+    nameExcludes = [...nameExcludes, name];
+    diffsDates = [
+      ...diffsDates,
+      ...getDifferencesWithOther(date, nameExcludes)
+    ];
+  });
+  return diffsDates;
+};
+
+const getDifferencesWithOther = (date, nameExcludes) => {
+  return findEmployeesToCompare(nameExcludes).map(({ date: date2 }) =>
+    Math.round(Math.abs(date.diff(date2, 'days', true)))
+  );
+};
+
+const findEmployeesToCompare = employeesExcludesToCompare =>
+  employees.filter(
+    employee => !employeesExcludesToCompare.find(name => name === employee.name)
+  );
+
+console.log('sum: ', sumDiffDate());
