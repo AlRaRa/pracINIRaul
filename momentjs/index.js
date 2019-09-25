@@ -30,7 +30,19 @@ const diffDates = (date1, date2) => {
   return date1.isSame(date2);
 };
 
-const sumDates = (date, unitTimes) => {};
+const sumDates = (date, unitTimes) => {
+  const dateclone = date.clone();
+  unitTimes.map(unitTime => {
+    const number = getNumber(unitTime);
+    const shorthand = getShorthandUnitTime(unitTime, number);
+    dateclone.add(number, shorthand);
+  });
+  return dateclone;
+};
+
+const getNumber = unitTime => parseInt(unitTime);
+
+const getShorthandUnitTime = (unitTime, number) => unitTime.replace(number, '');
 
 const setDateEmployee = name => {};
 
@@ -39,4 +51,8 @@ const sumDiffDate = () => {};
 const a = moment('2010-10-20');
 const b = moment('2010-10-20');
 
-diffDates(a, b);
+console.log('a: ', a.format(DATE_FORMAT_COMPLETE));
+console.log('sumDates: ', sumDates(a, ['2d']).format(DATE_FORMAT_COMPLETE));
+console.log('a: ', a.format(DATE_FORMAT_COMPLETE));
+
+// moment(string,stringFormato)
